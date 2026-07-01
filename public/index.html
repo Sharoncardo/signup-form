@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Signup Form</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="container">
+
+    <h2>Signup Form</h2>
+
+    <form id="signupForm">
+
+      <!-- STEP 1 -->
+      <div id="step1">
+
+        <input type="text" id="name" placeholder="Name" />
+        <small class="error" id="nameError"></small>
+
+        <input type="email" id="email" placeholder="Email" />
+        <small class="error" id="emailError"></small>
+
+        <button type="button" onclick="nextStep()">Next</button>
+
+      </div>
+
+      <!-- STEP 2 -->
+      <div id="step2" class="hidden">
+
+        <input type="password" id="password" placeholder="Password" />
+        <small class="error" id="passwordError"></small>
+
+        <input type="number" id="age" placeholder="Age" />
+        <small class="error" id="ageError"></small>
+
+        <button type="button" onclick="prevStep()">Back</button>
+        <button type="submit" id="submitBtn">Submit</button>
+
+      </div>
+
+    </form>
+
+    <p id="success"></p>
+
+  </div>
+
+  <script src="app.js"></script>
+
+</body>
+</html>
