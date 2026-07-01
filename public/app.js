@@ -86,6 +86,16 @@ function prevStep() {
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
+  const isPasswordValid = validateField("password");
+  const isAgeValid = validateField("age");
+  const isNameValid = validateField("name");
+  const isEmailValid = validateField("email");
+
+  // ❌ STOP HERE if anything is invalid
+  if (!isPasswordValid || !isAgeValid || !isNameValid || !isEmailValid) {
+    return;
+  }
+
   const submitBtn = document.getElementById("submitBtn");
   submitBtn.disabled = true;
 
@@ -98,10 +108,8 @@ form.addEventListener("submit", async (e) => {
 
   const res = await fetch("/signup", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(data)
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
   });
 
   const result = await res.json();
@@ -116,8 +124,6 @@ form.addEventListener("submit", async (e) => {
     return;
   }
 
-  localStorage.removeItem("draft");
-
   document.getElementById("success").textContent =
-    "Signup successful 🎉 Welcome!";
+    "Signup successful 🎉";
 });
